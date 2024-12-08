@@ -1,0 +1,40 @@
+2024-12-08 20:45:44,227 p=15 u=root n=ansible WARNING| [WARNING]: Platform linux on host host1 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another
+Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2024-12-08 20:45:44,228 p=15 u=root n=ansible INFO| host1 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-12-08 20:45:44,229 p=15 u=root n=ansible WARNING| [WARNING]: Platform linux on host host2 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another
+Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2024-12-08 20:45:44,241 p=15 u=root n=ansible INFO| host2 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python3.12"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+2024-12-08 20:45:52,221 p=64 u=root n=ansible INFO| PLAY [Write to sample text files on hosts] ***************************************************************************************************
+2024-12-08 20:45:52,248 p=64 u=root n=ansible INFO| TASK [Gathering Facts] ***********************************************************************************************************************
+2024-12-08 20:45:54,058 p=64 u=root n=ansible WARNING| [WARNING]: Platform linux on host host1 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another
+Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2024-12-08 20:45:54,060 p=64 u=root n=ansible INFO| ok: [host1]
+2024-12-08 20:45:54,067 p=64 u=root n=ansible WARNING| [WARNING]: Platform linux on host host2 is using the discovered Python interpreter at /usr/bin/python3.12, but future installation of another
+Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-
+core/2.18/reference_appendices/interpreter_discovery.html for more information.
+
+2024-12-08 20:45:54,068 p=64 u=root n=ansible INFO| ok: [host2]
+2024-12-08 20:45:54,146 p=64 u=root n=ansible INFO| TASK [Create a sample text file] *************************************************************************************************************
+2024-12-08 20:45:55,363 p=64 u=root n=ansible INFO| ok: [host1]
+2024-12-08 20:45:55,364 p=64 u=root n=ansible INFO| ok: [host2]
+2024-12-08 20:45:55,367 p=64 u=root n=ansible INFO| PLAY RECAP ***********************************************************************************************************************************
+2024-12-08 20:45:55,368 p=64 u=root n=ansible INFO| host1                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-08 20:45:55,369 p=64 u=root n=ansible INFO| host2                      : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

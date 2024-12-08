@@ -1,0 +1,57 @@
+version: '3.9'
+
+networks:
+  ansible_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24
+
+services:
+  control:
+    build:
+      context: ./control
+    container_name: ansible_control
+    networks:
+      ansible_net:
+        ipv4_address: 192.168.1.10
+    volumes:
+      - ./control:/control
+      - ./logs:/var/log/ansible  # Map logs to host machine
+    tty: true
+
+  host1:
+    image: ubuntu:latest
+    container_name: ansible_host1
+    networks:
+      ansible_net:
+        ipv4_address: 192.168.1.11
+    privileged: true
+    entrypoint: >
+      sh -c "
+      apt-get update &&
+      apt-get install -y openssh-server libpam-pwquality &&
+      echo root:password | chpasswd &&
+      mkdir -p /run/sshd &&
+      sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+      service ssh start &&
+      tail -f /dev/null
+      "
+
+  host2:
+    image: ubuntu:latest
+    container_name: ansible_host2
+    networks:
+      ansible_net:
+        ipv4_address: 192.168.1.12
+    privileged: true
+    entrypoint: >
+      sh -c "
+      apt-get update &&
+      apt-get install -y openssh-server libpam-pwquality &&
+      echo root:password | chpasswd &&
+      mkdir -p /run/sshd &&
+      sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+      service ssh start &&
+      tail -f /dev/null
+      "

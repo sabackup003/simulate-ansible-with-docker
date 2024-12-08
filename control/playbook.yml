@@ -1,0 +1,8 @@
+- name: Write to sample text files on hosts
+  hosts: targets
+  tasks:
+    - name: Create a sample text file
+      copy:
+        dest: /root/sample.txt
+        content: "This is a test file created by Ansible."
+
